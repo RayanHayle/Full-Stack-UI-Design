@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <script type="text/javascript" src="{{ url_for('static', filename='quiz.js') }}"></script>
+
+  <div class="container mt-4 d-flex flex-column" style="min-height: 80vh;">
+    
+    <!--Title-->
+    <h2 class="text-center mb-4">{{ question.title }}</h2>
+
+    <div class="flex-grow-1">
+      <div class="row justify-content-center">
+        
+        <!-- Question Video -->
+        {% if question.video %}
+          <div class="col-12 text-center mb-3">
+            <iframe src="{{ question.video }}" width="500" height="330" allow="autoplay" style="border: none;"></iframe>
+          </div>
+        {% endif %}
+
+        <!-- Question Image -->
+        {% if question.image %}
+          <div class="col-12 text-center mb-3">
+            <img src="{{ question.image }}" alt="Quiz Image" class="img-fluid" style="max-width: 500px;" />
+          </div>
+        {% endif %}
+
+        <!-- Choices -->
+        <div class="col-md-8" style="font-size: large;">
+          <form id="quiz-form" data-question="{{ question.id }}" data-next="{{ question.next_lesson }}" data-correct="{{ question.correct_answer }}">
+            {% for letter, choice in question.choices.items() %}
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="answer" value="{{ letter }}" id="choice-{{ letter }}" />
+                <label class="form-check-label" for="choice-{{ letter }}">
+                  {% if choice.endswith('.jpg') %}
+                    <img src="{{ choice }}" alt="Choice {{ letter }}" class="img-fluid" style="max-width: 300px;" />
+                  {% else %}
+                    {{ choice }}
+                  {% endif %}
+                </label>
+              </div>
+            {% endfor %}
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation and Progress -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+
+      <!-- Back Button -->
+      {% if question.prev_lesson >= 0 %}
+        <button class="btn btn-secondary" onclick="window.location.href='/quiz/{{ question.prev_lesson }}'">Back</button>
+      {% else %}
+        <div style="width: 50px;"></div> 
+      {% endif %}
+
+      <!-- Progress Bar -->
+      <div class="progress" style="width: 75%;">
+        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: {{ ((question.id + 1) / totalSlides) * 100 | round(0, 'floor') }}%;"></div>
+      </div>
+
+      <!-- Submit Button -->
+      <button class="btn btn-primary" id="submit-button">Submit</button>
+
+    </div>
+  </div>
+
+{% endblock %}

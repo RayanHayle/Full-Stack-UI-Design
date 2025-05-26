@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+
+  <!-- jquery -->
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+
+
+
+  <title>Bench Press</title>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container">
+      <a class="navbar-brand {% if 'quiz' not in request.path and 'learn' not in request.path %}fw-bold{% endif %}" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapse container -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+        <!-- Spacer -->
+        <div class="navbar-nav">
+          <!-- Note, may change these to first bring to a "homepage" for Lesson and Quiz instead of loading the first data point in it -->
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if 'learn' in request.path %}fw-bold{% endif %}" href="/learn/0" id="lessonDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Lessons
+            </a>
+            <div class="dropdown-menu" aria-labelledby="lessonDropdown" id="lessonDropdownMenu">
+              {% for id, title in lesson_pairs %}
+                <a class="dropdown-item {% if request.path == '/learn/' ~ id|string %}fw-bold{% endif %}" href="/learn/{{ id }}">{{ title }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          <a class="nav-link {% if 'quiz' in request.path %}fw-bold{% endif %}" href="/quiz/0">Quiz</a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.home-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.home-summary {
+    font-size: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.home-margin-bottom {
+    margin-bottom: 8px;
+}
+
+.carousel-img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.darkgrey-font {
+    color: var(--dark-gray);
+}
+
+@media (min-width: 992px) {
+    .home-offset-lg {
+      padding-top: 15vh;  /* Pushes everything down on large screens */
+    }
+}

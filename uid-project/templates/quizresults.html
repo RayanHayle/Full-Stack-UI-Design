@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <script type="text/javascript" src="{{ url_for('static', filename='quiz.js') }}"></script>
+
+  <div style="text-align: center;">
+    <br>
+    <h2 style="font-weight: bold;">You scored {{ correct }} out of {{ total }}!</h2>
+  
+    <table style="font-size: 18px;" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Your Answer</th>
+          <th>Result</th>
+          <th>Review</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in results|sort(attribute='id') %}
+          {% set slide = quiz_slides[result.id] %}
+          <tr>
+            <td style="text-align: left;">{{ slide.title }}</td>
+            <td>
+              {% if result.choice in slide.choices %}
+                {% set answer = slide.choices[result.choice] %}
+                {% if answer.endswith('.jpg') or answer.endswith('.png') %}
+                  <img src="{{ answer }}" alt="Answer Image" style="max-height: 100px;">
+                {% else %}
+                  {{ answer }}
+                {% endif %}
+              {% else %}
+                {{ result.choice }}
+              {% endif %}
+            </td>
+            <td style="color: {{ 'green' if result.correct else 'red' }}">
+              {{ 'Correct ✅' if result.correct else 'Incorrect ❌' }}
+            </td>
+            <td><a href="/learn/{{ slide.refrence_id }}">Review Lesson</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style="margin-top: 30px;">
+      <a href="/" class="btn btn-primary">Back Home</a>
+    </div>
+{% endblock %}

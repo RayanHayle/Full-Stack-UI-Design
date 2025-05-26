@@ -1,0 +1,38 @@
+.lesson-image-column {
+    max-height: 500px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2{
+    font-weight: bold;
+    font-size: 36px;
+    font-family: sans-serif;
+    text-decoration: underline;
+}
+
+p {
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+h5{
+
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: bold;
+
+}
+
+
+li {
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.table {
+    font-size: 24px;
+}

@@ -1,0 +1,86 @@
+:root {
+    --base-color:#accce6;
+    --accent-color: #003373;
+    --light-gray:#e0e0e0;
+    --dark-gray: #272727;
+  }
+
+
+
+#background {
+    background: linear-gradient(to bottom, rgb(38, 208, 240) 0%, rgb(38, 208, 240) 70%, white 70%, white 100%);
+    min-height: 100vh;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--base-color);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);  
+    color: white;               
+    border-color: var(--accent-color);      
+}
+  
+.btn-primary:hover {
+    background-color: #00234e;
+    border-color: #00234e;
+}
+
+#progressBar {
+    background-color: var(--accent-color);
+  }
+
+.main-progress-width {
+    width: 50%;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.custom-navbar {
+    background-color: var(--accent-color);
+}
+
+.custom-navbar .navbar-brand {
+    color: white;
+}
+
+.custom-navbar .nav-link:hover,
+.custom-navbar .navbar-brand:hover {
+    color: var(--light-gray);
+}
+
+/* Top-level Lessons link */
+.custom-navbar .nav-link.dropdown-toggle {
+    color: white;
+    /* light gray */
+}
+
+.custom-navbar .nav-link.dropdown-toggle:hover {
+    color: var(--light-gray);
+}
+
+/* Dropdown menu background */
+.custom-navbar .dropdown-menu {
+    background-color: white;
+    /* dark background */
+}
+
+/* Dropdown links */
+.custom-navbar .dropdown-item {
+    color: var(--dark-gray);
+    /* slightly darker gray */
+}
+
+.custom-navbar .nav-link {
+    color: white;
+}
+
+.table {
+    background-color: white; 
+}

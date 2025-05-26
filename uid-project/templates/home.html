@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div class="container">
+    <div class="home-offset-lg">
+      <div class="row align-items-stretch">
+        <!-- Left Column: Text Content -->
+        <div class="col-md-6 col-12 d-flex flex-column justify-content-center">
+          <div class="home-title darkgrey-font">How to Bench Press</div>
+          <div class="home-summary darkgrey-font">
+            Learn proper bench press technique, focusing on safety, form, and competition standards, with interactive lessons, visual guides, and practical tips for all skill levels.
+          </div>
+          <div class="home-buttons mt-3">
+            <a href="/learn/0" class="btn btn-primary btn-lg home-margin-bottom">Start Learning</a>
+            <a href="/quiz/0" class="btn btn-secondary btn-md">Skip to Quiz</a>
+          </div>
+        </div>
+
+        <!-- Right Column: Carousel -->
+        <div class="col-md-6 col-12 d-flex align-items-center">
+          <div id="carouselExample" class="carousel slide w-100" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/homepage/1.jpg') }}" class="d-block w-100 carousel-img" alt="Slide 1" />
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/homepage/2.jpg') }}" class="d-block w-100 carousel-img" alt="Slide 2" />
+              </div>
+              <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/homepage/3.jpg') }}" class="d-block w-100 carousel-img" alt="Slide 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

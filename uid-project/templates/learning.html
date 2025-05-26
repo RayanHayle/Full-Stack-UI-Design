@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <script type="text/javascript" src="{{ url_for('static', filename='learn.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='learn.css') }}" />
+
+  <div class="container mt-4 d-flex flex-column" style="min-height: 80vh;">
+
+    <!--Title-->
+    <h2 class="text-center mb-4">{{ lesson.title }}</h2>
+
+    <div class="flex-grow-1">
+      <div class="row">
+
+        <!--Images and Text-->
+        {% if lesson.info and lesson.image %}
+          <div class="col-md-6">
+            <p>{{ lesson.info|safe }}</p>
+          </div>
+          <div class="col-md-6 lesson-image-column">
+            {% for image in lesson.image %}
+              <img src="{{ url_for('static', filename='images/' + image) }}" class="img-fluid mb-3" style="max-height: {{ 100 // lesson.image|length }}%;" alt="{{ image }}" />
+            {% endfor %}
+          </div>
+
+        <!--Just Text-->
+        {% elif lesson.info and not lesson.image %}
+          <div class="col-12">
+            <p>{{ lesson.info|safe }}</p>
+          </div>
+
+        <!--Just Imagaes-->
+        {% elif lesson.image and not lesson.info %}
+          <div class="col-12 lesson-image-column">
+            {% for image in lesson.image %}
+              <img src="{{ url_for('static', filename='images/' + image) }}" class="img-fluid mb-3" style="max-height: {{ 100 // lesson.image|length }}%;" alt="{{ image }}" />
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    
+    <div class="d-flex justify-content-between align-items-center mt-4">
+
+      <!--Back Button-->
+      {% if lesson.prev_lesson >= 0 %}
+        <button class="btn btn-secondary" onclick="window.location.href='/learn/{{ lesson.prev_lesson }}'">Back</button>
+      {% else %}
+        <div style="width: 50px;"></div> 
+      {% endif %}
+      
+      <!--Progress Bar-->
+      <div class="progress" style="width: 75%;">
+        <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: {{ ((lesson.id + 1) / totalSlides) * 100 | round(0, 'floor') }}%;"></div>
+      </div>
+
+      <!--Next Button-->
+      <button class="btn btn-primary" onclick="window.location.href='/learn/{{ lesson.next_lesson }}'">Next</button>
+    </div>
+  </div>
+
+{% endblock %}
