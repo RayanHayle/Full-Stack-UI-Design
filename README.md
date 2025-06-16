@@ -9,7 +9,7 @@
     - JavaScript (jQuery, Ajax)
     -  API (server, client)
 
-**Grade Breakdown Final Grad: A**
+**Grade Breakdown Final Grade: A**
 - Design Section Participation: 10%
 - Weekly assignments: 60% (5% each)
 - Midterm Project: 10%
