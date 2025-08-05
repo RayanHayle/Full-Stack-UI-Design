@@ -1,5 +1,5 @@
-**Goals:**
-1. Understand users and build websites that suit the needs and abilities.
+**Overall Skills:**
+1.  Users and build websites that suit the needs and abilities.
 2. Design functioning systems through iteration and feedback.
 3. Frontend Development: HTML, CSS, JavaScript
 4. Backend Development:
@@ -8,9 +8,3 @@
     - React
     - JavaScript (jQuery, Ajax)
     -  API (server, client)
-
-**Grade Breakdown Final Grade: A**
-- Design Section Participation: 10%
-- Weekly assignments: 60% (5% each)
-- Midterm Project: 10%
-- Final Project: 20%
